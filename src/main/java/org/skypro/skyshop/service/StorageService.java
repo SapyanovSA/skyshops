@@ -12,8 +12,8 @@ import java.util.stream.Stream;
 
 @Service
 public class StorageService {
-    private final Map<UUID, Product>productMap;
-    private final Map<UUID, Article>articleMap;
+    private final Map<UUID, Product> productMap;
+    private final Map<UUID, Article> articleMap;
 
     public StorageService() {
         this.productMap = new HashMap<>();
@@ -69,5 +69,9 @@ public class StorageService {
                 productMap.values().stream(),
                 articleMap.values().stream()
         ).collect(Collectors.toList());
+    }
+
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(productMap.get(id));
     }
 }
